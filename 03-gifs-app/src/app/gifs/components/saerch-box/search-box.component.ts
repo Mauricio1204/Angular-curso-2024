@@ -1,3 +1,4 @@
+import { GifsService } from './../../services/gifs.service';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
@@ -10,22 +11,17 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
   placeholder="Search for gifs..."
   (keyup.enter)="serchTag()"
   #txtTagImput
-  >
-  `
-})
-
+  > `})
 export class SearchBoxComponent  {
   @ViewChild('txtTagImput')
  public tagImput !:ElementRef<HTMLInputElement>;
 
-
-
-  constructor() { }
-
+  constructor(private gifsService: GifsService ) { }
 
   serchTag(){
     const newTag =this.tagImput.nativeElement.value
-    console.log( newTag);
+    this.gifsService.serchTag( newTag);
+    this.tagImput.nativeElement.value = '';
   }
 
 }

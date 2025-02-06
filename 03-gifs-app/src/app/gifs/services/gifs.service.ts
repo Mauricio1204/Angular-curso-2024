@@ -7,9 +7,13 @@ export class GifsService {
 
   constructor() {  }
 
-
   get tagsHistory(): string[] {
     return [...this._tagsHistory]
+  }
+
+  serchTag(tag: string): void {
+
+    this._tagsHistory.unshift(tag)
   }
 
 }
